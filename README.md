@@ -1,12 +1,12 @@
 # nodejsbasic
 ===========
 
-Projet vierge pour nodeJS
+Jeu de mots
 
 A barebones Node.js app using [Express 4](http://expressjs.com/).
 
 ## Source de ce projet
-https://github.com/sandlafrogne/nodejsbasic.git
+https://github.com/sandlafrogne/clement.git
 
 ##Git Projet avec Source tree
 
@@ -19,7 +19,7 @@ Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https
 * npm install
 * node index.js
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+Your app should now be running on [localhost:5000](http://localhost:6000/).
 
 ## Deploying to Heroku
 * cd yourDirectory

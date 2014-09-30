@@ -1,128 +1,57 @@
-/*header*/
-.navbar-brand {
-	height:auto;
+
+.column {
+    width: 100px;
+    height: 30px;
+    /*background-color: lightyellow;*/
+    text-align: center;
+    /*border: 1px solid black;*/
+    display:inline-block;
+    margin: 50px;
+    font-family: fantasy;
+    font-size: large;
+    text-decoration:underline;
+}
+.column2 {
+     width: 100px;
+     height: 30px;
+     background-color: greenyellow;
+     text-align: center;
+     border: 1px solid black;
+     display:inline-block;
+     margin: 50px;
+     font-family: fantasy;
+     font-size: large;
+ }
+.columnok {
+  /*  width: 100px;
+    height: 30px;*/
+    background-color: deepskyblue;
+    /*text-align: center;
+    border: 1px solid black;
+    display:inline-block;
+    margin: 50px;
+    font-family: fantasy;
+    font-size: large;*/
 }
 
-#dropdownMenu1{
-	margin-top: 3px;
+.columnDrag {
+    opacity: 0.7;
+    background-color: blue;
 }
 
-.menu-mobile a{
-	color:#fff;	
+.columnDrop {
+    background-color: green;
 }
 
-.menu-search{
-	margin:3px 5px;
-}
-
-.menu-search .form-group{
-	position:relative;
-}
-
-.menu-search input{
-	padding-right:20px;
-}
-
-.btn-back{
-	margin:3px;
-}
-
-.glyphicon-remove {
-  position:absolute;
-  top:10px;
-  right:10px;
-}
-
-@media (min-width: 992px){
-	.menu-search{
-		float:right;
-	}	
-}
-
-.btn-search{
-	background:#ddd;
-	height:34px;
-}
-
-.navbar-header button{
-	margin-top:3px;
-}
-
-/*home*/
-.main-container{
-	padding:0 10px;
-}
-
-.col-xs-4{
-	padding:5px;
-}
-
-.row{
-	margin:0;
-}
-
-.badge{
-	text-overflow:ellipsis;
-	overflow:hidden;
-	max-width:80px;
-	white-space:nowrap;
-	font-size:9px;
-}
-
-.img-rounded{
-	margin-right:5px;
-}
-
-a{
-	cursor:pointer;
-}
-
-@media (min-width: 992px){
-	.col-md-2{
-		padding:15px;
-	}
-
-	.badge{
-		font-size:11px;
-		max-width:none;
-	}
-}
-
-/*app details*/
-.img-app-details{
-	width:50px;
-	height:50px;
-}
-
-.app-details{
-	margin-top:10px;
-}
-
-h3{
-	margin-top:0;
-}
-
-.thumbnail p{
-	margin-top:5px;
-}
-
-@media (min-width: 992px){
-	.img-app-details{
-		width:200px;
-		height:200px;
-	}
-
-	.app-details{
-		margin-left:20px;
-		max-width:60%;
-		margin-top:0px;
-	}
-}
-
-.app-property{
-	margin-left:5px;
-}
-
-.app-version{
-	color:#f16e00;
+.result {
+    width: 400px;
+    height: 50px;
+    background-color: red;
+    text-align: center;
+    font-family: fantasy;
+    font-size: xx-large;
+    border: 1px solid black;
+    display:inline-block;
+    margin: 100px;
+    text-decoration: blink ;
 }

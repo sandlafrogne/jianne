@@ -2,248 +2,42 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>NodeJS tester</title>
+    <title>Drag'nDrop</title>
     <script>document.write('<base href="' + document.location + '" />');</script>
     <link rel="stylesheet" href="css/nectarine.css">
-    <link rel="stylesheet" href="css/orange.css">
-      <link rel="stylesheet" href="css/slide.css">
-
 </head>
 
-<!--TODO : changer nom de l'appli-->
-<!--Nom de l'application à changer, même valeur que dans app.js-->
-<body ng-app="plunker">
-
-<div class="navbar navbar-default" ng-controller="navController">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <!--back en haut à gauche quand on n'est pas sur la home-->
-            <a ng-click="$back()" ng-show="!isHome && isConnected" class="btn btn-default pull-left btn-back"><span
-                    class="glyphicon glyphicon-chevron-left"></span></a>
-
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu-mobile"
-                    ng-show="isConnected">
-                <span class="sr-only">toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!--search en haut à droite-->
-            <button type="button" ng-show="isHome" class="navbar-toggle btn-search" data-toggle="collapse"
-                    data-target=".menu-search">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-            <!--Titre de l'appli-->
-            <a class="navbar-brand" href="#">Test Appli</a>
-        </div>
-        <!--Menu pour le PC-->
-        <!--<div ng-show="isConnected">-->
-        <div class="collapse navbar-collapse pull-right">
-            <div class="dropdown navbar-right">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#/pane">{{'PANE' | translate }}</a>
-                    </li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#/error">{{'ERROR' | translate }}</a>
-                    </li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#/home">{{'HOME' | translate }}</a>
-                    </li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#/as">{{'AS' | translate }}</a>
-                    </li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#/albums">{{'ALBUMS' | translate
-                        }}</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!--</div>-->
-        <div ng-show="isHome">
-            <form class="navbar-form navbar-right collapse navbar-collapse menu-search">
-                <div class="form-group">
-                    <input class="form-control" placeholder="{{ 'SEARCH' | translate }}" type="text" ng-model="search"
-                           ng-change="updateSearch(search)">
-                    <span ng-show="search" class="glyphicon glyphicon-remove" ng-click="resetSearch()"></span>
-                </div>
-            </form>
-        </div>
-        <!--Menu pour le mobile-->
-        <div class="collapse navbar-collapse menu-mobile">
-            <ul class="nav navbar-nav visible-xs" role="menu">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#/pane">{{ 'PANE' |translate
-                    }}</a></li>
-                <li role="Erreur"><a role="menuitem" tabindex="-1" href="#/error" ng-show="isExternal">{{'ERROR' |
-                    translate }}</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#/home">{{ 'HOME' | translate }}</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#/as">{{'AS' | translate }}</a>
-                </li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#/albums">{{'ALBUMS' | translate }}</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal -->
-
-<div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="error" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">{{ 'ERROR' | translate }}</h4>
-            </div>
-            <div class="modal-body">
-                {{ 'AN_ERROR_HAS_OCCURRED' | translate }}
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="info" tabindex="-1" role="dialog" aria-labelledby="error" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">{{ 'SUCCESS' | translate }}</h4>
-            </div>
-            <div class="modal-body">
-                {{ 'THE_OPERATION_WAS_SUCCESSFUL' | translate }}
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script type="text/ng-template" id="pane.html">
-
-    <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-        <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-        <li><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-        <li><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-        <div class="tab-pane active" id="home">bienvenue</div>
-        <div class="tab-pane" id="profile">test1</div>
-        <div class="tab-pane" id="messages">tset2</div>
-        <div class="tab-pane" id="settings">test3</div>
-    </div>
-</script>
-
+<body ng-app="clement">
 <script type="text/ng-template" id="error.html">
-    <h3>Test traduction : {{'ERROR' | translate}}</h3>
+    <h3>ERROR</h3>
 </script>
-<script type="text/ng-template" id="album.html">
-    <div id='dz-root'>
-    </div>
-    <div class="row">
-        <div ng-controller="MainCtrl">
-            <div class="col-lg-offset-1 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h2>Do you like Thomas Fersen ?</h2>
-                <!--          <div>
-                    <button ng-click="play_track(3)">Try his last album !</button>
-                </div>-->
-                <div class="row" ng-show="view">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <img class="img-responsive" src={{cover}}?size=medium>
-                        <ul>
-                            <div ng-repeat="track in tracks">
-                                <li><a class="link_track" ng-click="play_track($index)">{{track.title}}</a></li>
-                            </div>
-                        </ul>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                        <h4>Exemple de filtre pour trouver les types différents</h4>
 
-                        <div class="album_track_list">
-                            <table class="table_tracks">
-                                <tr ng-repeat="track in tracks |unique:'type'">
-                                    <td>{{track.type}}</a></td>
-                                    <!--<td style="text-align:right;"><a href="#/artist/{{track.artist.id}}">{{track.artist.name}}</a></td>-->
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-
-                    <div class="container slider">
-                        <img ng-repeat="slide in slides" class="slide slide-animation2"
-                             ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-
-                        <a class="arrow prev" ng-click="nextSlide()"></a>
-                        <a class="arrow next" ng-click="prevSlide()"></a>
-                        <nav class="nav">
-                            <div class="wrapper">
-                                <ul class="dots">
-                                    <li class="dot" ng-repeat="slide in slides">
-                                        <a  ng-class="{'active':isCurrentSlideIndex($index)}"
-                                           ng-click="setCurrentSlideIndex($index);">{{slide.image}}</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-
-
+<script type="text/ng-template" id="clement.html">
+    <h2>Jeu de mots Clément</h2>
+    <div ng-controller="MainCtrl">
+        <div  class="row col-md-12 col-lg-12">
+            <div ng-repeat="c in columns" class="column"
+                 drag="c" dragStyle="columnDrag"
+                 drop="c" dropStyle="columnDrop">
+                {{c.title}}
+            </div>
+        </div>
+        <div class="row col-md-12 col-lg-12">
+            <div ng-repeat="d in columns2" class="column2" drag="d" dragStyle="columnDrag" drop="d" dropStyle="columnDrop">
+                <div ng-if="good(d, $index)" class="columnok">
+                {{d.title}}
+                </div>
+                <div ng-if="!good(d, $index)" >
+                    {{d.title}}
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
-</script>
-<script type="text/ng-template" id="as.html">
-    <h2>Controleur avec this et appel avec as</h2>
-    <div id="ctrl-as-exmpl" ng-controller="SettingsController1 as settings">
-        Name: <input type="text" ng-model="settings.name"/>
-        [ <a href="" ng-click="settings.greet()">greet</a> ]<br/>
-        Contact:
-        <ul>
-            <li ng-repeat="contact in settings.contacts">
-                <select ng-model="contact.type">
-                    <option>phone</option>
-                    <option>email</option>
-                </select>
-                <input type="text" ng-model="contact.value"/>
-                [ <a href="" ng-click="settings.clearContact(contact)">clear</a>
-                | <a href="" ng-click="settings.removeContact(contact)">X</a> ]
-            </li>
-            <li>[ <a href="" ng-click="settings.addContact()">add</a> ]</li>
-        </ul>
-    </div>
-</script>
-
-<script type="text/ng-template" id="albums.html">
-    <div id='dz-root'>
-    </div>
-    <h2>Do you like Thomas Fersen ?</h2>
-    <div ng-controller="albumsController">
-
-        <div class="container slideSlider">
-            <div ng-repeat="album in albums" class="slide" >
-            <a href="/#/album/{{album.id}}">
-              <!--  <div class="container slideSlider">-->
-                <img class="slideSlide slide-animation2" ng-hide="!isCurrentSlideIndex($index)"  ng-src="{{album.cover}}?size=big">
-           <!-- </div>-->
-            </a>
+            <div class="row col-md-12 col-lg-12">
+            <div ng-if="end()" class="result">
+                Gagné
             </div>
+                </div>
         </div>
-        <a class="slideArrow prev"  ng-click="nextSlide()"></a>
-        <a class="slideArrow next"  ng-click="prevSlide()"></a>
 
-        <nav class="slideNav">
-            <div class="wrapper">
-                <ul class="slideNav">
-                   <li  ng-repeat="album in albums" ng-class="{'active':isCurrentSlideIndex($index)}">
-                        <!--<a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                           ng-click="setCurrentSlideIndex($index);">{{album.cover}}</a>-->
-                    <img src="{{album.cover}}"  alt="{{album.title}}" title="{{album.title}}"
-                         ng-click="showPhoto($index);"/>
-                    </li>
-                </ul>
-            </div>
-        </nav>
     </div>
 </script>
 
@@ -253,31 +47,14 @@
 </div>
 
 
-<!--jquery et bootstrap sont necessaires pour le dropdown menu. et il faut laisser l'import dans ce sens-->
 <script src="vendors/jquery-1.11.0.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
-<!--Pour la présentation des albums en photos-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-animate.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-touch.min.js"></script>
-<!--slides-->
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-<!--api deezer-->
-<script src="http://cdn-files.deezer.com/js/min/dz.js"></script>
-<!--multilangue, pascalprecht-->
-<script src="vendors/angular-translate.min.js"></script>
-
-
 <!--imports locaux du projet-->
 <script src="js/app.js"></script>
+<script src="js/directives/directive.js"></script>
 <script src="js/controllers/mainCtrl.js"></script>
-<script src="js/controllers/navController.js"></script>
-<script src="js/controllers/asController.js"></script>
-<script src="js/filters/ExampleFilter.js"></script>
-<script src="js/services/sharedProperties.js"></script>
-<script src="js/services/apiServices.js"></script>
+
 
 
 </body>

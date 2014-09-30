@@ -1,7 +1,7 @@
 {
-  "name": "nodejsbasic",
+  "name": "clement",
   "version": "1.0.0",
-  "description": "Structure vierge de projet node, test",
+  "description": "jeu de mots",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -13,6 +13,6 @@
     "node": "0.10.x"
   },
   "author": "Sandrine Lafrogne",
-  "contributors": ["test"],
+  "contributors": ["Thierry Balandier"],
   "license": "MIT"
 }
