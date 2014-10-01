@@ -1,38 +1,44 @@
 /* Contrôleur principal
  ================================================== */
 angular.module('controllers', [])
-    .controller("MainCtrl", ['$scope', '$rootScope',function($scope, $rootScope) {
-        $scope.init = [
-            {title: "Bonjour"},
-            {title: "Clément,"},
-            {title: "ça"},
-            {title: "va ?"},
-            {title: "Aujourd'hui"},
-            {title: "nous"},
-            {title: "sommes"},
-            {title: "mardi."}
-        ];
+    .controller("MainCtrl", ['$scope', '$rootScope','$http', function($scope, $rootScope,$http) {
+        $scope.init =[] ;
         $scope.columns=[];
-        $scope.columns2=[ ];
+        $scope.columns2=[];
+        $scope.posts=[];
+        $scope.newPhrase= [{title:''},{title:''},{title:''},{title:''},{title:''},{title:''},{title:''},{title:''},{title:''},{title:''},{title:''}]
 
-        var  ordre=[];
 
-        while (ordre.length < $scope.init.length){
-            j = Math.floor((Math.random() * $scope.init.length));
-            push='true'
-            for(i=0;i<ordre.length;i++){
-                if(ordre[i]==j) {
-                    push = 'false'
+            $http({method: 'GET', url: 'phrases.json'})
+                .success(function(data){
+                    $scope.posts = data;
+                    $scope.initialisation();
+                });
+
+
+        $scope.initialisation = function() {
+            $scope.init =[] ;
+            $scope.columns=[];
+            $scope.columns2=[ ];
+            j = Math.floor((Math.random() * $scope.posts.length));
+            $scope.init = $scope.posts[j]
+            var ordre = [];
+            while (ordre.length < $scope.init.length) {
+                j = Math.floor((Math.random() * $scope.init.length));
+                push = 'true'
+                for (i = 0; i < ordre.length; i++) {
+                    if (ordre[i] == j) {
+                        push = 'false'
+                    }
+                }
+                if (push == 'true') {
+                    ordre.push(j);
                 }
             }
-            if(push=='true') {
-                ordre.push(j);
+            for (i = 0; i < ordre.length; i++) {
+                $scope.columns.push($scope.init[ordre[i]])
+                $scope.columns2.push({title: i + 1 })
             }
-        }
-
-        for(i=0;i<ordre.length;i++){
-            $scope.columns.push($scope.init[ordre[i]])
-          $scope.columns2.push({title: i+1 })
         }
 
         $rootScope.$on('dropEvent', function (evt, dragged, dropped) {
@@ -113,3 +119,40 @@ angular.module('controllers', [])
 
     }])
 
+    .controller("manageCtrl", ['$scope', '$rootScope','$http', function($scope, $rootScope,$http) {
+        $scope.posts = [];
+        $scope.newPhrase = []
+        for (i=0; i<15;i++){
+            $scope.newPhrase.push({id : i+1, title:''  }).json
+        }
+
+        console.log($scope.newPhrase)
+
+        $http({method: 'GET', url: 'phrases.json'})
+            .success(function (data) {
+                $scope.posts = data;
+            });
+
+        $scope.addPhrase=function(){
+            var newPhraseLight=[]
+            for(i=0;i<$scope.newPhrase.length;i++) {
+                if ($scope.newPhrase[i].title != '' && $scope.newPhrase[i].title!= null  ) {
+                    console.log($scope.newPhrase[i])
+                    newPhraseLight.push($scope.newPhrase[i])
+                }
+            }
+            $scope.posts.push(newPhraseLight)
+            $http({
+                method: 'POST',
+                url: 'json',         //this is the json file with all the information I use
+                data: $scope.posts    //this contains the modified data
+            }).success(function(response) {
+                //addLog("Success message.");
+                console.log('success')
+            }).error(function(response){
+                //addLog("Error message.");
+                console.log('error')
+            })
+        }
+
+    }])

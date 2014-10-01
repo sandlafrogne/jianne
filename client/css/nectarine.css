@@ -2,14 +2,14 @@
 .column {
     width: 100px;
     height: 30px;
-    /*background-color: lightyellow;*/
+    background-color: lightyellow;
     text-align: center;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     display:inline-block;
     margin: 50px;
     font-family: fantasy;
     font-size: large;
-    text-decoration:underline;
+    /*text-decoration:underline;*/
 }
 .column2 {
      width: 100px;
@@ -23,8 +23,8 @@
      font-size: large;
  }
 .columnok {
-  /*  width: 100px;
-    height: 30px;*/
+    width: 100px;
+    height: 30px;
     background-color: deepskyblue;
     /*text-align: center;
     border: 1px solid black;
@@ -54,4 +54,10 @@
     display:inline-block;
     margin: 100px;
     text-decoration: blink ;
+}
+
+.phrase{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: medium;
+    display:inline-block;
 }
