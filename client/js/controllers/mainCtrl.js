@@ -6,6 +6,8 @@ angular.module('controllers', [])
         $scope.columns = [];
         $scope.columns2 = [];
         $scope.posts = [];
+        $scope.numeroPhrase=-1;
+        $scope.numeroNouvellePhrase=-1
 
         $http({method: 'GET', url: 'phrases.json'})
             .success(function (data) {
@@ -17,9 +19,13 @@ angular.module('controllers', [])
             $scope.init = [];
             $scope.columns = [];
             $scope.columns2 = [];
-            //choix de la phrase
-            j = Math.floor((Math.random() * $scope.posts.length));
-            $scope.init = $scope.posts[j]
+
+            //choix de la phrase, différente de la précédente
+            while($scope.numeroPhrase == $scope.numeroNouvellePhrase ) {
+                $scope.numeroNouvellePhrase = Math.floor((Math.random() * $scope.posts.length));
+            }
+            $scope.numeroPhrase=$scope.numeroNouvellePhrase;
+            $scope.init = $scope.posts[$scope.numeroPhrase]
            //mélange des mots de la phrase
             var ordre = [];
             while (ordre.length < $scope.init.length) {
@@ -44,7 +50,6 @@ angular.module('controllers', [])
             var i, oldIndex1, oldIndex2, depart, destination;
             for (i = 0; i < $scope.columns.length; i++) {
                 var c = $scope.columns[i];
-
                 if (dragged.title === c.title && dragged.id===c.id) {
                     oldIndex1 = i;
                     depart = "c";
@@ -83,22 +88,16 @@ angular.module('controllers', [])
                 var temp = $scope.columns[oldIndex1];
                 $scope.columns[oldIndex1] = $scope.columns2[oldIndex2];
                 $scope.columns2[oldIndex2] = temp;
-
                 if($scope.columns[oldIndex1].id == null || $scope.columns[oldIndex1].id ==undefined  ){
                     $scope.columns[oldIndex1].id = $scope.columns[oldIndex1].title
                     $scope.columns[oldIndex1].title='_'
-
                 }
-
             }
             //D4 to D2 --> D4=D2 et D2=temp
             if (depart == 'd' && destination == 'd') {
                 var temp = $scope.columns2[oldIndex1];
                 $scope.columns2[oldIndex1] = $scope.columns2[oldIndex2];
                 $scope.columns2[oldIndex2] = temp;
-
-
-
             }
             //D2 to C4 --> D2=C4 et C4=temp
             if (depart == 'd' && destination == 'c') {
@@ -173,6 +172,4 @@ angular.module('controllers', [])
                 //console.log('error')
             })
         }
-
-
     }])
