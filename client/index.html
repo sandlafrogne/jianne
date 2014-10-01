@@ -16,7 +16,7 @@
     <div ng-controller="MainCtrl">
         <div class="cadreCentre">
             <div class="title">Jeu de mots Clément</div>
-            <div class="pull-right">
+            <div class="pull-right" ng-if="end()" >
                 <button class="btn btn-primary" ng-click="initialisation()">Rejouer</button>
             </div>
         </div>
