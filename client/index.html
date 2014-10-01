@@ -13,16 +13,23 @@
 </script>
 
 <script type="text/ng-template" id="clement.html">
-    <h2>Jeu de mots Clément</h2>
     <div ng-controller="MainCtrl">
-        <div class="row col-md-12 col-lg-12">
-            <div ng-repeat="c in columns" class="column"
-                 drag="c" dragStyle="columnDrag"
-                 drop="c" dropStyle="columnDrop">
-                {{c.title}}
+        <div class="cadreCentre">
+            <div class="title">Jeu de mots Clément</div>
+            <div class="pull-right">
+                <button class="btn btn-primary" ng-click="initialisation()">Rejouer</button>
             </div>
         </div>
-        <div class="row col-md-12 col-lg-12">
+        <div class="row">
+            <div class="cadre">
+                <div ng-repeat="c in columns" class="column"
+                     drag="c" dragStyle="columnDrag"
+                     drop="c" dropStyle="columnDrop">
+                    {{c.title}}
+                </div>
+            </div>
+        </div>
+        <div class="cadre">
             <div ng-repeat="d in columns2" class="column2" drag="d" dragStyle="columnDrag" drop="d"
                  dropStyle="columnDrop">
                 <div ng-if="good(d, $index)" class="columnok">
@@ -32,46 +39,45 @@
                     {{d.title}}
                 </div>
             </div>
-            <div class="row col-md-12 col-lg-12">
+            <div class="row">
                 <div ng-if="end()" class="result">
                     Gagné
-
                 </div>
-
-                <button class="btn glyphicon" ng-click="initialisation()">Rejouer</button>
-
             </div>
         </div>
-
     </div>
 </script>
 
 
 <script type="text/ng-template" id="manage.html">
-    <h2>Manage</h2>
+    <h2>Liste des phrases</h2>
     <div ng-controller="manageCtrl">
+
         <div ng-repeat="phrase in posts">
             <div class="row">
+                <button class="btn btn-primary btn-sm glyphicon glyphicon-trash" data-ng-click="deletePhrase($index)"></button>
                 <div ng-repeat="c in phrase" class="phrase">
                     {{c.title}}&nbsp;
                 </div>
             </div>
         </div>
 
-
+        <br>
+        <br>
         <div class="row">
 
-<form name="form" role="form">
+            <h2>Ajouter une nouvelle phrase</h2>
 
-            <div ng-repeat="d in newPhrase" class="phrase">
-                <input class="form-control" ng-model="d.title" type="text"  >
+            <div>
+            <form name="form" role="form">
+                <div ng-repeat="d in newPhrase" class="phrase">
+                    <input class="form-control" ng-model="d.title" type="text">
+                </div>
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-primary" ng-click="addPhrase()">Enregistrer</button>
+                </div>
+            </form>
             </div>
-
-    <div class="pull-right">
-        <button type="submit" class="btn btn-primary" ng-click="addPhrase()">Enregistrer</button>
-    </div>
-</form>
-
         </div>
     </div>
 
@@ -84,6 +90,7 @@
 
 
 <script src="vendors/jquery-1.11.0.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.js"></script>
 <!--imports locaux du projet-->
