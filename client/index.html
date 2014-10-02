@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Drag'nDrop</title>
+    <title>Jeu Clément</title>
     <script>document.write('<base href="' + document.location + '" />');</script>
     <link rel="stylesheet" href="css/nectarine.css">
 </head>
@@ -15,14 +15,11 @@
 <script type="text/ng-template" id="clement.html">
     <div ng-controller="MainCtrl">
         <div class="cadreCentre">
-            <div class="title">Jeu de mots Clément</div>
-            <div class="pull-right" ng-if="end()" >
-                <button class="btn btn-primary" ng-click="initialisation()">Rejouer</button>
-            </div>
+            <div class="title">Retrouve le bon ordre</div>
         </div>
-        <div class="row">
+        <div>
             <div class="cadre">
-                <div ng-repeat="c in columns" class="column"
+                <div ng-repeat="c in columns" class="column pointer"
                      drag="c" dragStyle="columnDrag"
                      drop="c" dropStyle="columnDrop">
                     {{c.title}}
@@ -30,7 +27,7 @@
             </div>
         </div>
         <div class="cadre">
-            <div ng-repeat="d in columns2" class="column2" drag="d" dragStyle="columnDrag" drop="d"
+            <div ng-repeat="d in columns2" class="column2 pointer" drag="d" dragStyle="columnDrag" drop="d"
                  dropStyle="columnDrop">
                 <div ng-if="good(d, $index)" class="columnok">
                     {{d.title}}
@@ -39,11 +36,15 @@
                     {{d.title}}
                 </div>
             </div>
-            <div class="row">
+            <div>
                 <div ng-if="end()" class="result">
-                    Gagné
+                    C'est gagné !!!
                 </div>
             </div>
+        </div>
+        <div class="cadrereplay" ng-if="end()" >
+            <!--<button class="btn btn-primary" ng-click="initialisation()">Rejouer</button>-->
+            <button class="textreplay" ng-click="initialisation()">Rejouer</button>
         </div>
     </div>
 </script>

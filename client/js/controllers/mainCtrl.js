@@ -21,8 +21,12 @@ angular.module('controllers', [])
             $scope.columns2 = [];
 
             //choix de la phrase, différente de la précédente
-            while($scope.numeroPhrase == $scope.numeroNouvellePhrase ) {
-                $scope.numeroNouvellePhrase = Math.floor((Math.random() * $scope.posts.length));
+            if ($scope.posts.length>1) {
+                while ($scope.numeroPhrase == $scope.numeroNouvellePhrase) {
+                    $scope.numeroNouvellePhrase = Math.floor((Math.random() * $scope.posts.length));
+                }
+            } else {
+                $scope.numeroNouvellePhrase=0;
             }
             $scope.numeroPhrase=$scope.numeroNouvellePhrase;
             $scope.init = $scope.posts[$scope.numeroPhrase]
@@ -42,7 +46,7 @@ angular.module('controllers', [])
             }
             for (i = 0; i < ordre.length; i++) {
                 $scope.columns.push($scope.init[ordre[i]])
-                $scope.columns2.push({title: i + 1 })
+                $scope.columns2.push({id: i, title: '_'  })
             }
         }
 
@@ -88,10 +92,10 @@ angular.module('controllers', [])
                 var temp = $scope.columns[oldIndex1];
                 $scope.columns[oldIndex1] = $scope.columns2[oldIndex2];
                 $scope.columns2[oldIndex2] = temp;
-                if($scope.columns[oldIndex1].id == null || $scope.columns[oldIndex1].id ==undefined  ){
+               /* if($scope.columns[oldIndex1].id == null || $scope.columns[oldIndex1].id ==undefined  ){
                     $scope.columns[oldIndex1].id = $scope.columns[oldIndex1].title
                     $scope.columns[oldIndex1].title='_'
-                }
+                }*/
             }
             //D4 to D2 --> D4=D2 et D2=temp
             if (depart == 'd' && destination == 'd') {

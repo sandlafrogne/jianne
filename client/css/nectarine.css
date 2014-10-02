@@ -1,60 +1,106 @@
 
 .column {
-    width: 100px;
-    height: 30px;
+    width: 160px;
+    height: 40px;
     background-color: lightyellow;
     text-align: center;
     border: 1px solid black;
+    border-radius: 5px;
     display:inline-block;
-    margin: 50px;
+    margin: 25px;
+    padding: 8px;
     font-family: fantasy;
-    font-size: large;
+    font-size: xx-large;
     /*text-decoration:underline;*/
 }
 .column2 {
-     width: 100px;
-     height: 30px;
-     background-color: greenyellow;
+     width: 160px;
+     height: 40px;
+     background-color: antiquewhite;
      text-align: center;
      border: 1px solid black;
+     border-radius: 5px;
      display:inline-block;
-     margin: 50px;
+     margin: 25px;
+     padding: 8px;
      font-family: fantasy;
-     font-size: large;
+     font-size: xx-large;
  }
-.columnok {
-    width: 100px;
-    height: 30px;
-    background-color: deepskyblue;
-    /*text-align: center;
+
+.textreplay {
+    background-color: dodgerblue;
+    text-align: center;
     border: 1px solid black;
+    border-radius: 5px;
     display:inline-block;
-    margin: 50px;
+    margin: 25px;
+    padding: 8px;
     font-family: fantasy;
-    font-size: large;*/
+    font-size: xx-large;
 }
+
+
+.cadrereplay {
+    width: 1024px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.columnok {
+    /*width: 160px;*/
+    /*height: 40px;*/
+    /*background-color: deepskyblue;*/
+    color: dodgerblue ;
+/*    text-align: center;
+    border: 1px solid black;*/
+    /*border-radius: 5px;*/
+   /* display:inline-block;
+    margin: 25px;
+    padding: 8px;
+    font-family: fantasy;
+    font-size: xx-large;*/
+}
+
+
+/*.columnok {*/
+    /*color: deepskyblue;*/
+    /*border: 1px solid black;*/
+    /*width: 160px;*/
+    /*height: 40px;*/
+    /*background-color: deepskyblue;*/
+    /*border-radius: 5px;*/
+    /*padding: 8px;*/
+    /*text-align: center;*/
+    /*border: 1px solid black;*/
+    /*border-radius: 5px;*/
+    /*display:inline-block;*/
+    /*margin: 50px;*/
+    /*font-family: fantasy;*/
+    /*font-size: large;*/
+/*}*/
 
 .columnDrag {
     opacity: 0.7;
-    background-color: blue;
+    background-color: lightskyblue;
 }
 
 .columnDrop {
-    background-color: green;
+    background-color: lightskyblue;
 }
 
 .result {
-    width: 400px;
-    height: 50px;
-    background-color: red;
-    text-align: center;
+    width: 500px;
+    background-color: lightgreen;
     font-family: fantasy;
     font-size: xx-large;
     border: 1px solid black;
-    /*display:inline-block;*/
-
-    text-decoration: blink ;
+    border-radius: 5px;
     margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-family: fantasy;
+    font-size: xx-large;
+    text-align: center;
 }
 
 .phrase{
@@ -92,6 +138,7 @@
     background-color: #ff6600;
     border-color: #e65c00;
 }
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -111,8 +158,8 @@
 }
 
 .title{
-    color: mediumblue;
-    font-size: x-large;
+    color: midnightblue;
+    font-size: xx-large;
     font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bold;
     display: inline-block;
@@ -121,10 +168,10 @@
     width: 1024px;
     margin: auto;
     border: 3px solid transparent;
-    border-radius: 4px;
+    border-radius: 5px;
     border-color: black;
     margin-bottom: 20px;
-    background-color: gainsboro;
+    background-color: lightsteelblue;
 }
 
 .cadreCentre{
@@ -152,4 +199,8 @@
 }
 .glyphicon-trash:before {
     content: "\e020";
+}
+
+.pointer {
+    cursor: pointer;
 }
