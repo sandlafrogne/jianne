@@ -140,7 +140,10 @@ angular.module('controllers', [])
             _codec=audio.canPlayType()
             var _phrase = "";
             for (j = 0; j < $scope.columns2.length; j++) {
-                _phrase += $scope.columns2[j].title + " ";
+                _phrase += $scope.columns2[j].title
+                if (!($scope.columns2[j].title.indexOf("'")>-1)) {
+                    _phrase += " "
+                }
             }
             var _adresse = _api_link + "?key=" + _api_key + "&hl=" + _language + "&r=-4&&f=22khz_16bit_stereo&src=" + _phrase + "&c=" + _codec + "&rnd=" + Math.random();
             audio.play(_adresse)
