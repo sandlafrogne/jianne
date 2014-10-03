@@ -28,7 +28,7 @@
  }
 
 .textreplay {
-    background-color: dodgerblue;
+    background-color: lavender;
     text-align: center;
     border: 1px solid black;
     border-radius: 5px;
@@ -37,6 +37,7 @@
     padding: 8px;
     font-family: fantasy;
     font-size: xx-large;
+    display:inline-block;
 }
 
 
@@ -160,7 +161,7 @@
 .title{
     color: midnightblue;
     font-size: xx-large;
-    font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: fantasy;
     font-weight: bold;
     display: inline-block;
 }

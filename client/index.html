@@ -42,10 +42,17 @@
                 </div>
             </div>
         </div>
-        <div class="cadrereplay" ng-if="end()" >
-            <!--<button class="btn btn-primary" ng-click="initialisation()">Rejouer</button>-->
-            <button class="textreplay" ng-click="initialisation()">Rejouer</button>
+        <div class="cadrereplay" ng-if="end() && applause" >
+            <audio  ng-if="end() && applause" id="applause" src="crowdapplause.wav" autoplay="true">
+                Votre navigateur ne supporte pas l'élément <code>audio</code>.
+            </audio>
+            <button class="textreplay pointer" ng-click="initialisation()">Rejouer</button>
+            <audio id="audioPlayer" ng-model="audioPlayer">
+                Votre navigateur ne supporte pas l'élément <code>audio</code>.
+            </audio>
+            <button class="textreplay pointer" ng-click="text2speech()">Ecouter la phrase</button>
         </div>
+
     </div>
 </script>
 

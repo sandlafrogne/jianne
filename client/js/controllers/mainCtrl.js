@@ -8,6 +8,7 @@ angular.module('controllers', [])
         $scope.posts = [];
         $scope.numeroPhrase=-1;
         $scope.numeroNouvellePhrase=-1
+        $scope.applause=false;
 
         $http({method: 'GET', url: 'phrases.json'})
             .success(function (data) {
@@ -48,6 +49,7 @@ angular.module('controllers', [])
                 $scope.columns.push($scope.init[ordre[i]])
                 $scope.columns2.push({id: i, title: '_'  })
             }
+
         }
 
         $rootScope.$on('dropEvent', function (evt, dragged, dropped) {
@@ -109,6 +111,7 @@ angular.module('controllers', [])
                 $scope.columns2[oldIndex1] = $scope.columns[oldIndex2];
                 $scope.columns[oldIndex2] = temp;
             }
+            $scope.applause=true;
             $scope.$apply();
         })
 
@@ -119,17 +122,53 @@ angular.module('controllers', [])
         }
 
         $scope.end = function () {
-            var retour = true
-            for (i = 0; i < $scope.init.length; i++) {
-                if ($scope.init[i].title != $scope.columns2[i].title) {
-                    retour = false;
+           // console.log($scope.column2.length);
+
+
+                var retour = true
+                for (i = 0; i < $scope.init.length; i++) {
+                    if ($scope.init[i].title != $scope.columns2[i].title) {
+                        retour = false;
+                    }
                 }
-            }
-            return retour
+                return retour
         }
 
+        $scope.text2speech = function () {
+            var _language = 'fr-fr';
+            var _api_link = 'http://api.voicerss.org/';
+            var _api_key = 'b98717f8ac2d49ffa87abf6014ba68c5';
+            var _codec = "";
+            if (document.getElementById("audioPlayer") != null) {
+                if (document.getElementById("audioPlayer").canPlayType('audio/mpeg') != "")
+                    _codec = "mp3";
+                else
+                    _codec = "wav";
+                var _phrase="";
+                for (j = 0; j < $scope.columns2.length; j++) {
+                    _phrase +=$scope.columns2[j].title+" ";
+                }
+                var _adresse = _api_link + "?key=" + _api_key + "&hl=" + _language + "&r=-4&&f=22khz_16bit_stereo&src=" + _phrase + "&c=" + _codec + "&rnd=" + Math.random();
+                document.getElementById("audioPlayer").src = _adresse;
+                document.getElementById("audioPlayer").play();
+            }
+        }
+        }])
 
-    }])
+//            $http({
+//                method: 'GET',
+//                url: 'http://api.voicerss.org',
+//                params: {
+//                    key:"b98717f8ac2d49ffa87abf6014ba68c5",
+//                    hl:"fr-fr",
+//                    src:"toto"
+//                }
+//            }).success(function (response) {
+//                console.log('OK');
+//            }).error(function (response) {
+//                console.log('NOK');
+//            })
+//        }
 
     .controller("manageCtrl", ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
         $scope.posts = [];
@@ -176,4 +215,5 @@ angular.module('controllers', [])
                 //console.log('error')
             })
         }
+
     }])
