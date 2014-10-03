@@ -1,14 +1,14 @@
 /* Contrôleur principal
  ================================================== */
 angular.module('controllers', [])
-    .controller("MainCtrl", ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+    .controller("MainCtrl", ['$scope', '$rootScope', '$http', 'audio', function ($scope, $rootScope, $http, audio) {
         $scope.init = [];
         $scope.columns = [];
         $scope.columns2 = [];
         $scope.posts = [];
-        $scope.numeroPhrase=-1;
-        $scope.numeroNouvellePhrase=-1
-        $scope.applause=false;
+        $scope.numeroPhrase = -1;
+        $scope.numeroNouvellePhrase = -1
+        $scope.lectureText = false
 
         $http({method: 'GET', url: 'phrases.json'})
             .success(function (data) {
@@ -22,16 +22,16 @@ angular.module('controllers', [])
             $scope.columns2 = [];
 
             //choix de la phrase, différente de la précédente
-            if ($scope.posts.length>1) {
+            if ($scope.posts.length > 1) {
                 while ($scope.numeroPhrase == $scope.numeroNouvellePhrase) {
                     $scope.numeroNouvellePhrase = Math.floor((Math.random() * $scope.posts.length));
                 }
             } else {
-                $scope.numeroNouvellePhrase=0;
+                $scope.numeroNouvellePhrase = 0;
             }
-            $scope.numeroPhrase=$scope.numeroNouvellePhrase;
+            $scope.numeroPhrase = $scope.numeroNouvellePhrase;
             $scope.init = $scope.posts[$scope.numeroPhrase]
-           //mélange des mots de la phrase
+            //mélange des mots de la phrase
             var ordre = [];
             while (ordre.length < $scope.init.length) {
                 j = Math.floor((Math.random() * $scope.init.length));
@@ -49,29 +49,29 @@ angular.module('controllers', [])
                 $scope.columns.push($scope.init[ordre[i]])
                 $scope.columns2.push({id: i, title: '_'  })
             }
-
+            $scope.lectureText = false
         }
 
         $rootScope.$on('dropEvent', function (evt, dragged, dropped) {
             var i, oldIndex1, oldIndex2, depart, destination;
             for (i = 0; i < $scope.columns.length; i++) {
                 var c = $scope.columns[i];
-                if (dragged.title === c.title && dragged.id===c.id) {
+                if (dragged.title === c.title && dragged.id === c.id) {
                     oldIndex1 = i;
                     depart = "c";
                 }
-                if (dropped.title === c.title && dropped.id=== c.id) {
+                if (dropped.title === c.title && dropped.id === c.id) {
                     oldIndex2 = i;
                     destination = "c"
                 }
             }
             for (j = 0; j < $scope.columns.length; j++) {
                 var d = $scope.columns2[j];
-                if (dragged.title === d.title && dragged.id===d.id) {
+                if (dragged.title === d.title && dragged.id === d.id) {
                     oldIndex1 = j;
                     depart = "d";
                 }
-                if (dropped.title === d.title && dropped.id===d.id) {
+                if (dropped.title === d.title && dropped.id === d.id) {
                     oldIndex2 = j;
                     destination = "d"
                 }
@@ -94,10 +94,6 @@ angular.module('controllers', [])
                 var temp = $scope.columns[oldIndex1];
                 $scope.columns[oldIndex1] = $scope.columns2[oldIndex2];
                 $scope.columns2[oldIndex2] = temp;
-               /* if($scope.columns[oldIndex1].id == null || $scope.columns[oldIndex1].id ==undefined  ){
-                    $scope.columns[oldIndex1].id = $scope.columns[oldIndex1].title
-                    $scope.columns[oldIndex1].title='_'
-                }*/
             }
             //D4 to D2 --> D4=D2 et D2=temp
             if (depart == 'd' && destination == 'd') {
@@ -111,7 +107,7 @@ angular.module('controllers', [])
                 $scope.columns2[oldIndex1] = $scope.columns[oldIndex2];
                 $scope.columns[oldIndex2] = temp;
             }
-            $scope.applause=true;
+
             $scope.$apply();
         })
 
@@ -122,16 +118,17 @@ angular.module('controllers', [])
         }
 
         $scope.end = function () {
-           // console.log($scope.column2.length);
-
-
-                var retour = true
-                for (i = 0; i < $scope.init.length; i++) {
-                    if ($scope.init[i].title != $scope.columns2[i].title) {
-                        retour = false;
-                    }
+            // console.log($scope.column2.length);
+            var retour = true
+            for (i = 0; i < $scope.init.length; i++) {
+                if ($scope.init[i].title != $scope.columns2[i].title) {
+                    retour = false;
                 }
-                return retour
+            }
+            if (retour && $scope.init.length > 1 && !$scope.lectureText)
+                audio.play('crowdapplause.wav')
+
+            return retour
         }
 
         $scope.text2speech = function () {
@@ -139,36 +136,17 @@ angular.module('controllers', [])
             var _api_link = 'http://api.voicerss.org/';
             var _api_key = 'b98717f8ac2d49ffa87abf6014ba68c5';
             var _codec = "";
-            if (document.getElementById("audioPlayer") != null) {
-                if (document.getElementById("audioPlayer").canPlayType('audio/mpeg') != "")
-                    _codec = "mp3";
-                else
-                    _codec = "wav";
-                var _phrase="";
-                for (j = 0; j < $scope.columns2.length; j++) {
-                    _phrase +=$scope.columns2[j].title+" ";
-                }
-                var _adresse = _api_link + "?key=" + _api_key + "&hl=" + _language + "&r=-4&&f=22khz_16bit_stereo&src=" + _phrase + "&c=" + _codec + "&rnd=" + Math.random();
-                document.getElementById("audioPlayer").src = _adresse;
-                document.getElementById("audioPlayer").play();
+            $scope.lectureText = true
+            _codec=audio.canPlayType()
+            var _phrase = "";
+            for (j = 0; j < $scope.columns2.length; j++) {
+                _phrase += $scope.columns2[j].title + " ";
             }
+            var _adresse = _api_link + "?key=" + _api_key + "&hl=" + _language + "&r=-4&&f=22khz_16bit_stereo&src=" + _phrase + "&c=" + _codec + "&rnd=" + Math.random();
+            audio.play(_adresse)
         }
-        }])
+    }])
 
-//            $http({
-//                method: 'GET',
-//                url: 'http://api.voicerss.org',
-//                params: {
-//                    key:"b98717f8ac2d49ffa87abf6014ba68c5",
-//                    hl:"fr-fr",
-//                    src:"toto"
-//                }
-//            }).success(function (response) {
-//                console.log('OK');
-//            }).error(function (response) {
-//                console.log('NOK');
-//            })
-//        }
 
     .controller("manageCtrl", ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
         $scope.posts = [];
