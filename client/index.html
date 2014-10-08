@@ -72,20 +72,26 @@
 
         <br>
         <br>
-        <div class="row">
+        <div>
 
-            <h2>Ajouter une nouvelle phrase</h2>
+            <h2>Gestion des phrases</h2>
 
-            <div>
             <form name="form" role="form">
                 <div ng-repeat="d in newPhrase" class="phrase">
                     <input class="form-control" ng-model="d.title" type="text">
                 </div>
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-primary" ng-click="addPhrase()">Enregistrer</button>
+                <div>
+                    <button type="submit" class="btn btn-primary" ng-click="addPhrase()">Ajouter la phrase</button>
+                </div>
+                <BR/><BR/>
+
+                <div>
+                    <button type="submit" class="btn btn-primary" ng-click="backup()">Faire un backup</button>
+                    </div>
+                        <div>
+                    <button type="submit" class="btn btn-primary" ng-click="getbackup()">Restaurer depuis le backup</button>
                 </div>
             </form>
-            </div>
         </div>
     </div>
 

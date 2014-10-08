@@ -182,8 +182,8 @@ angular.module('controllers', [])
         save = function () {
             $http({
                 method: 'POST',
-                url: 'json',         //this is the json file with all the information I use
-                data: $scope.posts    //this contains the modified data
+                url: 'json',
+                data: $scope.posts    // this contains the modified data
             }).success(function (response) {
                 //réinitialisation du formulaire
                 $scope.newPhrase = []
@@ -197,4 +197,23 @@ angular.module('controllers', [])
             })
         }
 
+        $scope.backup = function () {
+            $http({
+                method: 'POST',
+                url: 'backup'
+            }).success(function (response) {
+            }).error(function (response) {
+                console.log('problem during the backup')
+            })
+        }
+
+        $scope.getbackup = function () {
+            $http({method: 'GET', url: 'backupphrases.json'})
+                .success(function (data) {
+                    $scope.posts = data;
+                    save();
+                }).error(function (response) {
+                    console.log('problem during the restore')
+                });
+        }
     }])
