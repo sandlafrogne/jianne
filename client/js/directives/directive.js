@@ -2,11 +2,14 @@ angular.module('directives', [])
     .directive("drag", ['$rootScope', function ($rootScope) {
 
         function dragStart(evt, element, dragStyle) {
+            console.log("dragStart");
             element.addClass(dragStyle);
             evt.originalEvent.dataTransfer.setData("id", evt.target.id);
             evt.originalEvent.dataTransfer.effectAllowed = 'move';
         };
         function dragEnd(evt, element, dragStyle) {
+            console.log("dragEnd");
+
             element.removeClass(dragStyle);
         };
 
@@ -30,16 +33,19 @@ angular.module('directives', [])
     .directive("drop", ['$rootScope', function ($rootScope) {
 
         function dragEnter(evt, element, dropStyle) {
+            console.log("dragEnter");
             evt.preventDefault();
             element.addClass(dropStyle);
         };
         function dragLeave(evt, element, dropStyle) {
+            console.log("dragLeave");
             element.removeClass(dropStyle);
         };
         function dragOver(evt) {
             evt.preventDefault();
         };
         function drop(evt, element, dropStyle) {
+            console.log("drop");
             evt.preventDefault();
             element.removeClass(dropStyle);
         };

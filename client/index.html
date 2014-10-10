@@ -14,21 +14,20 @@
 
 <script type="text/ng-template" id="clement.html">
     <div ng-controller="MainCtrl">
+        <div class="selection-off">
+
         <div class="cadreCentre">
             <div class="title">Retrouve le bon ordre</div>
         </div>
         <div>
             <div class="cadre">
-                <div ng-repeat="c in columns" class="column pointer"
-                     drag="c" dragStyle="columnDrag"
-                     drop="c" dropStyle="columnDrop">
+                <div ng-repeat="c in columns" class="column pointer" drag="c" dragStyle="columnDrag" drop="c" dropStyle="columnDrop">
                     {{c.title}}
                 </div>
             </div>
         </div>
         <div class="cadre">
-            <div ng-repeat="d in columns2" class="column2 pointer" drag="d" dragStyle="columnDrag" drop="d"
-                 dropStyle="columnDrop">
+            <div ng-repeat="d in columns2" class="column2 pointer" drag="d" dragStyle="columnDrag" drop="d" dropStyle="columnDrop">
                 <div ng-if="good(d, $index)" class="columnok">
                     {{d.title}}
                 </div>
@@ -52,7 +51,7 @@
             </audio>-->
             <button class="textreplay pointer" ng-click="text2speech()">Ecouter la phrase</button>
         </div>
-
+        </div>
     </div>
 </script>
 
