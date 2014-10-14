@@ -16,41 +16,44 @@
     <div ng-controller="MainCtrl">
         <div class="selection-off">
 
-        <div class="cadreCentre">
-            <div class="title">Retrouve le bon ordre</div>
-        </div>
-        <div>
-            <div class="cadre">
-                <div ng-repeat="c in columns" class="column pointer" drag="c" dragStyle="columnDrag" drop="c" dropStyle="columnDrop">
-                    {{c.title}}
-                </div>
-            </div>
-        </div>
-        <div class="cadre">
-            <div ng-repeat="d in columns2" class="horizontal">
-                <span ng-if="good(d, $index)" class="column2ok pointer" drag="d" dragStyle="columnDrag" drop="d" dropStyle="columnDrop" >
-                    {{d.title}}
-                </span>
-                <span ng-if="!good(d, $index)" class="column2 pointer" drag="d" dragStyle="columnDrag" drop="d" dropStyle="columnDrop" >
-                    {{d.title}}
-                </span>
+            <div class="cadreCentre">
+                <div class="title">Retrouve le bon ordre</div>
             </div>
             <div>
-                <div ng-if="end()" class="result">
-                    C'est gagné !!!
+                <div class="cadre">
+                    <div ng-repeat="c in columns" class="column pointer" drag="c" dragStyle="columnDrag" drop="c"
+                         dropStyle="columnDrop">
+                        {{c.title}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="cadrereplay" ng-if="end()" >
-           <!-- <audio  ng-if="end() && applause" id="applause" src="crowdapplause.wav" autoplay="true">
-                Votre navigateur ne supporte pas l'élément <code>audio</code>.
-            </audio>-->
-            <button class="textreplay pointer" ng-click="initialisation()">Rejouer</button>
-           <!-- <audio id="audioPlayer" ng-model="audioPlayer">
-                Votre navigateur ne supporte pas l'élément <code>audio</code>.
-            </audio>-->
-            <button class="textreplay pointer" ng-click="text2speech()">Ecouter la phrase</button>
-        </div>
+            <div class="cadre">
+                <div ng-repeat="d in columns2" class="horizontal">
+                <span ng-if="good(d, $index)" class="column2ok pointer" drag="d" dragStyle="columnDrag" drop="d"
+                      dropStyle="columnDrop">
+                    {{d.title}}
+                </span>
+                <span ng-if="!good(d, $index)" class="column2 pointer" drag="d" dragStyle="columnDrag" drop="d"
+                      dropStyle="columnDrop">
+                    {{d.title}}
+                </span>
+                </div>
+                <div>
+                    <div ng-if="end()" class="result">
+                        C'est gagné !!!
+                    </div>
+                </div>
+            </div>
+            <div class="cadrereplay" ng-if="end()">
+                <!-- <audio  ng-if="end() && applause" id="applause" src="crowdapplause.wav" autoplay="true">
+                     Votre navigateur ne supporte pas l'élément <code>audio</code>.
+                 </audio>-->
+                <button class="textreplay pointer" ng-click="initialisation()">Rejouer</button>
+                <!-- <audio id="audioPlayer" ng-model="audioPlayer">
+                     Votre navigateur ne supporte pas l'élément <code>audio</code>.
+                 </audio>-->
+                <button class="textreplay pointer" ng-click="text2speech()">Ecouter la phrase</button>
+            </div>
         </div>
     </div>
 </script>
@@ -62,7 +65,8 @@
 
         <div ng-repeat="phrase in posts">
             <div class="row">
-                <button class="btn btn-primary btn-sm glyphicon glyphicon-trash" data-ng-click="deletePhrase($index)"></button>
+                <button class="btn btn-primary btn-sm glyphicon glyphicon-trash"
+                        data-ng-click="deletePhrase($index)"></button>
                 <div ng-repeat="c in phrase" class="phrase">
                     {{c.title}}&nbsp;
                 </div>
@@ -75,6 +79,7 @@
             <button type="submit" class="btn btn-primary" ng-click="backup()">Faire un backup</button>
         </div>
         <br>
+
         <div>
             <button type="submit" class="btn btn-primary" ng-click="getbackup()">Restaurer depuis le backup</button>
         </div>
@@ -91,6 +96,7 @@
                     <input class="form-control" ng-model="d.title" type="text">
                 </div>
                 <br><br>
+
                 <div>
                     <button type="submit" class="btn btn-primary" ng-click="addPhrase()">Ajouter la phrase</button>
                 </div>

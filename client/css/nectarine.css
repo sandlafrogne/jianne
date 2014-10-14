@@ -207,7 +207,7 @@
 }
 
 
-/*
+
 
 
 .dropper {
@@ -231,7 +231,7 @@
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.8) inset;
 }
 
-.draggable {
+.box {
     display: inline-block;
     margin: 20px 10px 10px 20px;
     padding-top: 20px;
@@ -253,4 +253,4 @@
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-}*/
+}
