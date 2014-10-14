@@ -27,13 +27,13 @@
             </div>
         </div>
         <div class="cadre">
-            <div ng-repeat="d in columns2" class="column2 pointer" drag="d" dragStyle="columnDrag" drop="d" dropStyle="columnDrop">
-                <div ng-if="good(d, $index)" class="columnok">
+            <div ng-repeat="d in columns2" class="horizontal">
+                <span ng-if="good(d, $index)" class="column2ok pointer" drag="d" dragStyle="columnDrag" drop="d" dropStyle="columnDrop" >
                     {{d.title}}
-                </div>
-                <div ng-if="!good(d, $index)">
+                </span>
+                <span ng-if="!good(d, $index)" class="column2 pointer" drag="d" dragStyle="columnDrag" drop="d" dropStyle="columnDrop" >
                     {{d.title}}
-                </div>
+                </span>
             </div>
             <div>
                 <div ng-if="end()" class="result">
