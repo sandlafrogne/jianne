@@ -1,4 +1,4 @@
-# Jeu Clément
+# Jeu Jianne
 ===========
 
 Jeu de mots
@@ -6,7 +6,7 @@ Jeu de mots
 A barebones Node.js app using [Express 4](http://expressjs.com/).
 
 ## Source de ce projet
-https://github.com/sandlafrogne/clement.git
+https://github.com/sandlafrogne/jianne.git
 
 ##Git Projet avec Source tree
 
