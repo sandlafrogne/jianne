@@ -18,5 +18,8 @@
   "contributors": [
     "Thierry Balandier"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "grunt-contrib-imagemin": "^0.9.3"
+  }
 }

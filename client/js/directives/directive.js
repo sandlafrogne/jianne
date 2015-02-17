@@ -2,7 +2,7 @@ angular.module('directives', [])
     .directive("drag", ['$rootScope', function ($rootScope) {
 
         var dragIcon = document.createElement('img');
-        dragIcon.src = '/icone.jpg'
+        dragIcon.src = '/image/icone.jpg'
         function dragStart(evt, element, dragStyle) {
             //console.log("dragStart");
             evt.originalEvent.dataTransfer.setDragImage(dragIcon, -10, -10);

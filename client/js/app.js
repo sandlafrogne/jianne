@@ -19,14 +19,14 @@ angular.module('clement', ['ngRoute', 'controllers', 'services', 'directives', '
         },
         // Exersise for the reader - extend this service to include other functions
         // like pausing, etc, etc.
-        audioElement: audioElement,
+        audioElement2: audioElement,
         canPlayType: function(){
-            if(audioElement.canPlayType('audio/mpeg' != ""))
-                return('mp3')
+            if(audioElement.canPlayType('audio/mpeg' !== ""))
+                return('mp3');
             else
-                return('wav')
+                return('wav');
         }
-    }
+    };
 });
 
 /*Ajout des modules externes*/
