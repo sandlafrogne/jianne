@@ -12,6 +12,14 @@ module.exports = function(grunt) {
                 'buildClient'
             ]
         },
+        copy: {
+            main: {
+
+                        expand: true,
+                        src: ['image/*','client/css/*','client/fonts/*'],
+                        dest: 'buildClient/'
+                }
+        },
         jshint: {
             work: [
                 'client/js/*.js',
@@ -54,6 +62,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
 
     grunt.registerTask('buildClient', [

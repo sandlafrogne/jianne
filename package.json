@@ -20,6 +20,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-imagemin": "^0.9.3"
   }
 }

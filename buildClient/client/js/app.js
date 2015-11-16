@@ -1,5 +1,5 @@
 //TODO : changer le nom du module, même valeur que dans index.html
-angular.module('clement', ['ngRoute', 'controllers', 'services', 'directives', 'filters','angular-google-analytics'])
+angular.module('clement', ['ngRoute', 'controllers', 'services', 'directives', 'filters'])
     .config(function ($routeProvider,$httpProvider) {
         $routeProvider.when('/', {templateUrl: 'clement.html'})
             .when('/manage', {templateUrl: 'manage.html'})
@@ -7,24 +7,6 @@ angular.module('clement', ['ngRoute', 'controllers', 'services', 'directives', '
             .otherwise({
                 redirectTo: '/error'
             });
-    })
-    .config(function (AnalyticsProvider) {
-    // Add configuration code as desired - see below
-        // initial configuration
-         AnalyticsProvider.setAccount('UA-70156173-1');
-
-        // track all routes/states (or not)
-        AnalyticsProvider.trackPages(true);
-
-        // Use analytics.js instead of ga.js
-        AnalyticsProvider.useAnalytics(true);
-
-        // change page event name
-        AnalyticsProvider.setPageEvent('$stateChangeSuccess');
-     })
-    .run(function(Analytics) {
-        // In case you are relying on automatic page tracking, you need to inject Analytics
-        // at least once in your application (for example in the main run() block)
     })
 
 .factory('audio',function ($document) {
